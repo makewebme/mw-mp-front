@@ -1,5 +1,7 @@
 import { Helmet } from 'react-helmet'
 
+import { PageWrapper } from 'App.styled'
+
 
 const HomePage: React.FC = () => {
   return <>
@@ -7,7 +9,9 @@ const HomePage: React.FC = () => {
       <title>Главная - MW Marketplace</title>
     </Helmet>
 
-    <h1>Главная</h1>
+    <PageWrapper>
+      <h1>Главная</h1>
+    </PageWrapper>
   </>
 }
 
