@@ -4,18 +4,20 @@ import colors from 'consts/colors'
 
 
 export const Wrapper = styled.div`
-  padding: 10px;
-  position: relative;
+  display: flex;
+  justify-content: space-between;
+  margin-top: 40px;
+`
 
-  svg {
-    cursor: pointer;
-  }
+export const ImagesWrapper = styled.div`
+  width: calc(50% - 20px);
+  position: relative;
 `
 
 export const LikeWrapper = styled.div`
   cursor: pointer;
-  width: 30px;
-  height: 30px;
+  width: 40px;
+  height: 40px;
   position: absolute;
   top: 0;
   right: 0;
@@ -29,19 +31,27 @@ export const LikeWrapper = styled.div`
 `
 
 export const Image = styled.img`
+  width: calc(50% - 20px);
   margin-bottom: 10px;
+  max-height: 40vh;
+  height: 100%;
   width: 100%;
-  height: 165px;
   border-radius: 4px;
-  object-fit: scale-down;
+  object-fit: contain;
 `
 
+export const InfoWrapper = styled.div`
+  width: calc(50% - 20px);
+`
+
+// TODO: Duplicate in blocks/ProductCard/styled.ts
 export const PriceWrapper = styled.div`
   display: flex;
   align-items: flex-end;
   margin-bottom: 10px;
 `
 
+// TODO: Duplicate in blocks/ProductCard/styled.ts
 export const PriceRegular = styled.div`
   font-size: 18px;
   font-weight: 700;
@@ -49,32 +59,17 @@ export const PriceRegular = styled.div`
   color: ${colors.primary};
 `
 
+// TODO: Duplicate in blocks/ProductCard/styled.ts
 export const PriceRegularWhenDiscounted = styled.div`
   text-decoration: line-through;
   color: #999;
   font-size: 15px;
 `
 
+// TODO: Duplicate in blocks/ProductCard/styled.ts
 export const PriceDiscounted = styled.div`
   font-size: 18px;
   font-weight: 700;
   margin-right: 10px;
   color: ${colors.primary};
-`
-
-export const Title = styled.h3`
-  margin-bottom: 5px;
-`
-
-export const Desc = styled.div`
-  margin-bottom: 10px;
-`
-
-export const BtnsWrapper = styled.div`
-  display: flex;
-  flex-direction: column;
-
-  * + * {
-    margin-top: 10px;
-  }
 `

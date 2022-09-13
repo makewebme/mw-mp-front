@@ -1,6 +1,5 @@
-import { createReducer, createAction } from '@reduxjs/toolkit'
+import { createReducer, createAction, AnyAction } from '@reduxjs/toolkit'
 
-import { T_AppThunk } from 'store/types'
 import { I_UserData } from './types'
 
 
@@ -28,9 +27,9 @@ const userDataReducer = createReducer(initialState, (builder) => {
 })
 
 
-export const setUserData = (userData: I_UserData): T_AppThunk => (dispatch) => {
-  dispatch(setUserDataAction(userData))
-}
+export const setUserData = (userData: I_UserData): AnyAction => (
+  setUserDataAction(userData)
+)
 
 
 export default userDataReducer
