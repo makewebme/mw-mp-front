@@ -5,7 +5,7 @@ import { I_AppStore } from './types'
 
 
 const initialState: I_AppStore = {
-  isLogged: false,
+  isLogged: true,
   isAppLoading: false,
 }
 
