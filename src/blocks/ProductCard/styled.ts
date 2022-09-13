@@ -22,10 +22,6 @@ export const LikeWrapper = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
-
-  svg {
-    pointer-events: none;
-  }
 `
 
 export const Image = styled.img`

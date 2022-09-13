@@ -7,11 +7,11 @@ export const pathsPublic: { [k: string]: string } = {
   home: '/',
   login: '/login',
   productDetails: '/product/:idOrSlug',
+  favorites: '/favorites',
   cart: '/cart',
 }
 
 export const pathsPrivate: { [k: string]: string } = {
-  favorites: '/favorites',
   accountSettings: '/account-settings',
 }
 

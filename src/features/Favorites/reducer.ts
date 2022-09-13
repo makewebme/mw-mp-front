@@ -13,17 +13,15 @@ const favoritesReducer = createReducer(initialState, (builder) => {
   // Add to favorites
   builder.addCase(
     addToFavoritesAction,
-    (state: any, action: PayloadAction<number>) => {
-      return Array.from(new Set([ ...state, action.payload ]))
-    }
+    (state: any, action: PayloadAction<number>) => [ ...state, action.payload ]
   )
 
   // Remove from favorites
   builder.addCase(
     removeFromFavoritesAction,
-    (state: any, action: PayloadAction<number>) => {
-      return state.filter((favoriteId: number) => favoriteId !== action.payload)
-    }
+    (state: any, action: PayloadAction<number>) => (
+      state.filter((favoriteId: number) => favoriteId !== action.payload)
+    )
   )
 })
 
