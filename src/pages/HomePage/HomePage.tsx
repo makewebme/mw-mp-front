@@ -1,9 +1,11 @@
+import { useEffect, useState } from 'react'
 import { Helmet } from 'react-helmet'
 import { useSelector } from 'react-redux'
 
+import { get } from 'helpers/request'
 import ProductCard from 'blocks/ProductCard'
 import { selectFavorites } from 'features/Favorites/selectors'
-import { dummyProducts } from 'pages/dummyProducts'
+import { I_UniRes } from 'types'
 import { PageWrapper } from 'App.styled'
 import {
   ProductGroup,
@@ -13,6 +15,16 @@ import {
 
 const HomePage: React.FC = () => {
   const idsInFavorites = useSelector(selectFavorites)
+
+  const [ products, setProducts ] = useState<any[]>()
+
+  useEffect(() => {
+    get('/products')
+      .then((res: I_UniRes) => setProducts(res.data))
+  }, [])
+
+
+  if (!products) return <p>Loading</p>
 
 
   return <>
@@ -25,7 +37,7 @@ const HomePage: React.FC = () => {
         <h2>Рекомендуемые товары</h2>
 
         <ProductGroupContainer>
-          {dummyProducts.map((p) => (
+          {products.map((p) => (
             <ProductCard
               {...p}
               key={p.id}

@@ -1,7 +1,7 @@
 export interface I_ProductDetails {
   id: number
   slug?: string
-  imgSrc: string
+  image: string
   priceRegular: number
   priceDiscounted?: number
   title: string

@@ -1,7 +1,7 @@
-import { I_ProductDetails } from 'pages/types'
+// import { I_ProductDetails } from 'pages/types'
 
 
-export const dummyProducts: I_ProductDetails[] = [
+export const dummyProducts: any[] = [
   {
     id: 1,
     slug: 'netbook-digme-eve-15c419',
