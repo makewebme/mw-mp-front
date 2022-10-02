@@ -25,10 +25,10 @@ interface I_ProductCardProps {
   id: number
   slug?: string
   image: string
-  priceRegular: number
+  price: number
   priceDiscounted?: number
   title: string
-  desc: string
+  description: string
   isLiked: boolean
   hideLikes?: boolean
 }
@@ -38,10 +38,10 @@ const ProductCard: React.FC<I_ProductCardProps> = ({
   id,
   slug,
   image,
-  priceRegular,
+  price,
   priceDiscounted,
   title,
-  desc,
+  description,
   isLiked,
   hideLikes = false,
 }) => {
@@ -90,9 +90,9 @@ const ProductCard: React.FC<I_ProductCardProps> = ({
       <PriceWrapper>
         {Number.isInteger(priceDiscounted) ? <>
           <PriceDiscounted>{priceDiscounted} ₽</PriceDiscounted>
-          <PriceRegularWhenDiscounted>{priceRegular} ₽</PriceRegularWhenDiscounted>
+          <PriceRegularWhenDiscounted>{price} ₽</PriceRegularWhenDiscounted>
         </> : (
-          <PriceRegular>{priceRegular} ₽</PriceRegular>
+          <PriceRegular>{price} ₽</PriceRegular>
         )}
       </PriceWrapper>
 
@@ -102,7 +102,7 @@ const ProductCard: React.FC<I_ProductCardProps> = ({
         </Link>
       </Title>
 
-      <Desc>{desc}</Desc>
+      <Desc>{description}</Desc>
 
       <BtnsWrapper>
         <Button block>

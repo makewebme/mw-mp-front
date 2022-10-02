@@ -3,10 +3,11 @@ import { useDispatch, useSelector } from 'react-redux'
 import { Helmet } from 'react-helmet'
 import { useParams } from 'react-router-dom'
 
+import { get } from 'helpers/request'
 import { addToFavorites, removeFromFavorites } from 'features/Favorites/reducer'
 import { selectFavorites } from 'features/Favorites/selectors'
-import { dummyProducts } from 'pages/dummyProducts'
 import { I_ProductDetails } from 'pages/types'
+import { I_UniRes } from 'types'
 import { ReactComponent as HeartEmpty } from './img/heart-empty.svg'
 import { ReactComponent as HeartFilled } from './img/heart-filled.svg'
 import {
@@ -30,11 +31,8 @@ const ProductDetailsPage: React.FC = () => {
   const [ productDetails, setProductDetails ] = useState<I_ProductDetails>()
 
   useEffect(() => {
-    const found = dummyProducts.find((p) => (
-      [ String(p.id), p.slug ].includes(params.idOrSlug)
-    ))
-
-    if (found) setProductDetails(found)
+    get(`/products/${params.idOrSlug}`)
+      .then((res: I_UniRes) => setProductDetails(res.data))
   }, [ params.idOrSlug ])
 
   const idsInFavorites = useSelector(selectFavorites)
@@ -58,7 +56,7 @@ const ProductDetailsPage: React.FC = () => {
   if (!productDetails) return null
 
 
-  const { id, image, title, desc, priceRegular, priceDiscounted } = productDetails
+  const { id, image, title, description, price, priceDiscounted } = productDetails
 
 
   return <>
@@ -69,7 +67,7 @@ const ProductDetailsPage: React.FC = () => {
     <PageWrapper>
       <Wrapper>
         <ImagesWrapper>
-          <Image src={image} />
+          <Image src={`${process.env.REACT_APP_API_URL}/images/products/${image}`} />
 
           <LikeWrapper
             data-product-id={id}
@@ -81,16 +79,17 @@ const ProductDetailsPage: React.FC = () => {
 
         <InfoWrapper>
           <h1>{title}</h1>
-          <p>{desc}</p>
 
           <PriceWrapper>
             {Number.isInteger(priceDiscounted) ? <>
               <PriceDiscounted>{priceDiscounted} ₽</PriceDiscounted>
-              <PriceRegularWhenDiscounted>{priceRegular} ₽</PriceRegularWhenDiscounted>
+              <PriceRegularWhenDiscounted>{price} ₽</PriceRegularWhenDiscounted>
             </> : (
-              <PriceRegular>{priceRegular} ₽</PriceRegular>
+              <PriceRegular>{price} ₽</PriceRegular>
             )}
           </PriceWrapper>
+
+          <p>{description}</p>
         </InfoWrapper>
       </Wrapper>
     </PageWrapper>
