@@ -1,4 +1,4 @@
-// import { I_ProductDetails } from 'pages/types'
+// import type { I_ProductDetails } from 'pages/types'
 
 
 export const dummyProducts: any[] = [

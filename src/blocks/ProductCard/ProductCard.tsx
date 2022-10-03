@@ -1,7 +1,7 @@
 import { useCallback, useMemo } from 'react'
-import { useDispatch } from 'react-redux'
 import { Link, useLocation } from 'react-router-dom'
 
+import { useAppDispatch } from 'store'
 import Button from 'components/Button'
 import { paths } from 'routes/helpers'
 import { addToFavorites, removeFromFavorites } from 'features/Favorites/reducer'
@@ -45,7 +45,7 @@ const ProductCard: React.FC<I_ProductCardProps> = ({
   isLiked,
   hideLikes = false,
 }) => {
-  const dispatch = useDispatch()
+  const dispatch = useAppDispatch()
   const location = useLocation()
 
   const handleFavorites = useCallback((e: React.MouseEvent<HTMLElement>) => {

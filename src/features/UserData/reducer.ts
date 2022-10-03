@@ -1,6 +1,7 @@
-import { createReducer, createAction, AnyAction } from '@reduxjs/toolkit'
+import { createReducer, createAction } from '@reduxjs/toolkit'
+import type { AnyAction } from '@reduxjs/toolkit'
 
-import { I_UserData } from './types'
+import type { I_UserData } from './types'
 
 
 const initialState: I_UserData = {

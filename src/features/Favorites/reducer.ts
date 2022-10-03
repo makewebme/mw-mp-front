@@ -1,4 +1,5 @@
-import { createReducer, createAction, PayloadAction, AnyAction } from '@reduxjs/toolkit'
+import { createReducer, createAction } from '@reduxjs/toolkit'
+import type { PayloadAction, AnyAction } from '@reduxjs/toolkit'
 
 import { I_Favorites } from './types'
 

@@ -1,20 +1,17 @@
 import { useEffect, useState } from 'react'
 import { Helmet } from 'react-helmet'
-import { useSelector } from 'react-redux'
 
+import { useAppSelector } from 'store'
 import { get } from 'helpers/request'
 import ProductCard from 'blocks/ProductCard'
 import { selectFavorites } from 'features/Favorites/selectors'
-import { I_UniRes } from 'types'
 import { PageWrapper } from 'App.styled'
-import {
-  ProductGroup,
-  ProductGroupContainer,
-} from './styled'
+import { ProductGroup, ProductGroupContainer } from './styled'
+import type { I_UniRes } from 'types'
 
 
 const HomePage: React.FC = () => {
-  const idsInFavorites = useSelector(selectFavorites)
+  const idsInFavorites = useAppSelector(selectFavorites)
 
   const [ products, setProducts ] = useState<any[]>()
 

@@ -6,6 +6,7 @@
 export const pathsPublic: { [k: string]: string } = {
   home: '/',
   login: '/login',
+  register: '/register',
   productDetails: '/product/:idOrSlug',
   favorites: '/favorites',
   cart: '/cart',
