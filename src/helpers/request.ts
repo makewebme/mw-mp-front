@@ -13,13 +13,13 @@ const request = async (
   url: string,
   body?: { [k: string]: any },
 ) => {
-  // const tokenData: I_TokenData = JSON.parse(localStorage.getItem('MW_TOKEN_CABINET')!)
+  const tokenData = JSON.parse(localStorage.getItem('MW_MP_TOKEN_MARKETPLACE')!)
 
   const options: I_Options = {
     method,
     headers: {
       'Content-Type': 'application/json',
-      // 'Authorization': 'Bearer ' + tokenData?.accessToken,
+      'Authorization': 'Bearer ' + tokenData?.accessToken,
     },
   }
 
@@ -59,15 +59,14 @@ const request = async (
     process.env.REACT_APP_API_URL + url + convertedParams,
     options as RequestInit
   )
-    // .then((res: any) => {
-    //   // Logout app if not authorized
-    //   if (res.status === 401) {
-    //     localStorage.removeItem('MW_TOKEN_CABINET')
-    //     window.location.reload()
-    //   }
+    .then((res) => {
+      // Logout app if not authorized
+      if (res.status === 401) {
+        localStorage.removeItem('MW_MP_TOKEN_MARKETPLACE')
+      }
 
-    //   return res
-    // })
+      return res
+    })
     .then((res: Response) => res.json())
     .catch((err) => console.error(err))
 }
