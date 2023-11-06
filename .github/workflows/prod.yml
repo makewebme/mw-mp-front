@@ -37,6 +37,7 @@ jobs:
             git clone https://github.com/makewebme/mw-mp-front.git
             cd ./mw-mp-front
             docker login -u ${{ secrets.DOCKERHUB_USERNAME }} -p ${{ secrets.DOCKERHUB_PASSWORD }}
+            docker-compose -f docker-compose-prod.yml down
             docker-compose -f docker-compose-prod.yml up -d --build
             cd ..
             rm -rf mw-mp-front
