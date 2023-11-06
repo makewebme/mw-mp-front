@@ -1,0 +1,13 @@
+version: '3.5'
+
+services:
+  front:
+    container_name: mw-mp-front
+    image: makewebme/mw-mp-front:latest
+    networks:
+      - mwnet
+    restart: unless-stopped
+
+networks:
+  mwnet:
+    name: mw-mp_mwnet
