@@ -1,0 +1,15 @@
+version: '3.5'
+
+services:
+  front:
+    container_name: mw-mp-front
+    build: ../mw-mp-front
+    # ports:
+      # - 127.0.0.1:6015:80
+    networks:
+      - mwnet
+    restart: unless-stopped
+
+networks:
+  mwnet:
+    driver: bridge
